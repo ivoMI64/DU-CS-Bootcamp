@@ -1,0 +1,41 @@
+---
+- name: Configure Elk VM with Docker
+  hosts: elkservers
+  remote_user: elk
+  become: true
+  tasks:
+    # Use apt module
+  - name: Install docker.io
+    apt:
+      force_apt_get: yes
+      name: #TODO
+      state: #TODO
+
+    # Use apt module
+  - name: Install python-pip
+    apt:
+      force_apt_get: yes
+      name: #TODO 
+      state: #TODO 
+
+    # Use pip module
+  - name: Install Docker module
+    pip:
+      name: #TODO 
+      state: #TODO
+
+    # Use command module
+  - name: Increase virtual memory
+    command: sysctl -w vm.max_map_count=262144
+
+    # Use docker_container module
+  - name: download and launch a docker elk container
+    docker_container:
+      name: elk
+      image: sebp/elk
+      state: started
+    # Please list the ports that ELK runs on
+      published_ports:
+        - #TODO
+        - #TODO 
+        - #TODO 
